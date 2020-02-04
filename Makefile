@@ -13,9 +13,15 @@ MINILIBX = -I minilibx_macos -L minilibx_macos -lmlx -framework OpenGL -framewor
 all: $(NAME)
 
 $(NAME):
+	@echo "\x1B[32making libft.."
 	@make -C $(LIBFT)
+	@echo "\x1B[32mmaking minilibx.."
 	@make -C $(MINLIB)
-	@gcc $(SRCS) $(MINILIBX) -L $(LIBFT) -lft -o $(NAME)
+	@echo "\x1B[32mmaking ft_wolf.."
+	@make ft_wolf
+
+ft_wolf:
+	@gcc $(SRCS) $(FLAGS) $(MINILIBX) -L $(LIBFT) -lft -o $(NAME)
 
 clean:
 	@rm -rf $(NAME)
@@ -23,8 +29,9 @@ clean:
 
 fclean: clean
 	@make fclean -C $(LIBFT)
+	@rm -rf *.dSYM
 
 re: fclean all
 
 debug:
-	@gcc $(SRCS) $(MINILIBX) -L $(LIBFT) -lft -o $(NAME) -g -fsanitize=address
+	@gcc $(SRCS) $(FLAGS) $(MINILIBX) -L $(LIBFT) -lft -o $(NAME) -g -fsanitize=address
