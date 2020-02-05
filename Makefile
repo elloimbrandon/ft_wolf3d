@@ -6,21 +6,22 @@ FLAGS = -Wall -Werror -Wextra
 
 LIBFT = libft
 
-MINLIB = minilibx_macos
+MINILIB = minilibx_macos
 
 MINILIBX = -I minilibx_macos -L minilibx_macos -lmlx -framework OpenGL -framework AppKit
 
 all: $(NAME)
 
 $(NAME):
-	@echo "\x1B[32making libft.."
+	@echo "\x1B[34mMaking libft.."
 	@make -C $(LIBFT)
-	@echo "\x1B[32mmaking minilibx.."
-	@make -C $(MINLIB)
-	@echo "\x1B[32mmaking ft_wolf.."
-	@make ft_wolf
+	@echo "\x1B[34mMaking minilibx.."
+	@make -C $(MINILIB)
+	@echo "\x1B[35mMaking ft_wolf.."
+	@make wolf
+	@echo "\x1B[32mFt_Wolf made!"
 
-ft_wolf:
+wolf:
 	@gcc $(SRCS) $(FLAGS) $(MINILIBX) -L $(LIBFT) -lft -o $(NAME)
 
 clean:
@@ -29,6 +30,7 @@ clean:
 
 fclean: clean
 	@make fclean -C $(LIBFT)
+	@make clean -C $(MINILIB)
 	@rm -rf *.dSYM
 
 re: fclean all
