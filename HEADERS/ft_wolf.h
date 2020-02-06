@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_wolf.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brfeltz <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: brfeltz <brfeltz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:42:50 by brfeltz           #+#    #+#             */
-/*   Updated: 2020/02/04 15:43:40 by brfeltz          ###   ########.fr       */
+/*   Updated: 2020/02/05 19:05:06 by brfeltz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,28 @@
 /*
 ** Structs
 */
+
+typedef struct          s_mlx
+{
+    void    *mlx_image;
+    void    *mlx_window;
+    void    *mlx_ptr;
+
+}                       t_mlx;
+
+typedef struct          s_map
+{
+    double posx;
+	double posy;
+	double dirx;
+	double diry;
+	double planex;
+	double planey;
+	double time;
+	double old_time;
+}                       t_map;
+
+
 
 
 /*
