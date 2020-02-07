@@ -6,7 +6,7 @@
 /*   By: brfeltz <brfeltz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:42:50 by brfeltz           #+#    #+#             */
-/*   Updated: 2020/02/06 20:31:36 by brfeltz          ###   ########.fr       */
+/*   Updated: 2020/02/06 20:58:36 by brfeltz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ typedef struct          s_map
 	double diry;
 	double planex;
 	double planey;
-	// double time;
-	// double old_time;
 	double camerax;
 	double raydirx;
 	double raydiry;

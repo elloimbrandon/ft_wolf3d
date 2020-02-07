@@ -6,7 +6,7 @@
 /*   By: brfeltz <brfeltz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:39:14 by brfeltz           #+#    #+#             */
-/*   Updated: 2020/02/06 20:39:52 by brfeltz          ###   ########.fr       */
+/*   Updated: 2020/02/06 20:58:32 by brfeltz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ static void		ft_map_init(t_map *map)
 	map->diry = 0;
 	map->planex = 0;
 	map->planey = 0.66;
-	// map->time = 0;
-	// map->old_time = 0;
 	map->camerax = 0;
 	map->raydirx = 0;
 	map->raydiry = 0;
