@@ -6,7 +6,7 @@
 /*   By: brfeltz <brfeltz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:42:50 by brfeltz           #+#    #+#             */
-/*   Updated: 2020/02/05 19:05:06 by brfeltz          ###   ########.fr       */
+/*   Updated: 2020/02/06 20:31:36 by brfeltz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@
 ** Macros
 */
 
+#define SWIDTH 800
+#define SHEIGHT 800
+#define MWIDTH 24
+#define MHEIGHT 24
 
 /*
 ** Structs
@@ -45,8 +49,28 @@ typedef struct          s_map
 	double diry;
 	double planex;
 	double planey;
-	double time;
-	double old_time;
+	// double time;
+	// double old_time;
+	double camerax;
+	double raydirx;
+	double raydiry;
+	double deltadistx;
+	double deltadisty;
+	double sidedistx;
+	double sidedisty;
+	double wallx;
+	int	tex_x;
+	int texwidth;
+	int perpwalldist;
+	int	lineheight;
+	int	drawstart;
+	int drawend;
+	int stepx;
+	int stepy;
+	int mapx;
+	int mapy;
+	int hit;
+	int side;
 }                       t_map;
 
 
