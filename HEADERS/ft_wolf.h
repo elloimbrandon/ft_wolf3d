@@ -6,7 +6,7 @@
 /*   By: brfeltz <brfeltz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:42:50 by brfeltz           #+#    #+#             */
-/*   Updated: 2020/02/11 17:58:04 by brfeltz          ###   ########.fr       */
+/*   Updated: 2020/02/12 05:55:26 by brfeltz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 ** Macros
 */
 
-#define SWIDTH 640
-#define SHEIGHT 480
+#define SWIDTH 1000
+#define SHEIGHT 1000
 #define MWIDTH 24
 #define MHEIGHT 24
 
@@ -39,12 +39,15 @@ typedef struct          s_mlx
     void    *mlx_window;
     void    *mlx_ptr;
 	void	*mlx_image_ptr;
+	int		size_l;// added 
+	int		bits_per_pix; // added
+	int		endian; // added
 
 }                       t_mlx;
 
 typedef struct          s_map
 {
-	// int **wmap;
+	int i;
     double posx;
 	double posy;
 	double dirx;
@@ -74,9 +77,6 @@ typedef struct          s_map
 	int mapy;
 	int hit;
 	int side;
-	int	size_l;// added 
-	int	bits_per_pix; // added
-	int	endian; // added
 }                       t_map;
 
 
