@@ -16,9 +16,7 @@
 
 #include "../HEADERS/ft_wolf.h"
 
-
-
-static void		ft_map_init(t_map *map)
+static void ft_map_init(t_map *map)
 {
 	map->posx = 22;
 	map->posy = 12;
@@ -53,48 +51,47 @@ static void		ft_map_init(t_map *map)
 	map->endian = 0;
 }
 
-int		f_close(void *mlx)
+int f_close(void *mlx)
 {
 	(void)mlx;
 	exit(0);
 }
 
-int 	**worldmap(int **wmap)
+int **worldmap(int **wmap)
 {
 
-int	smap[MWIDTH][MHEIGHT] = 
-{
-  {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,2,2,2,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
-  {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,3,0,0,0,3,0,0,0,1},
-  {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,2,2,0,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,0,0,0,0,5,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,0,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-  {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
-};
+	int smap[MWIDTH][MHEIGHT] =
+		{
+			{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 0, 0, 3, 0, 3, 0, 3, 0, 0, 0, 1},
+			{1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 1},
+			{1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 0, 0, 0, 0, 0, 2, 2, 0, 2, 2, 0, 0, 0, 0, 3, 0, 3, 0, 3, 0, 0, 0, 1},
+			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 4, 0, 4, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 4, 0, 0, 0, 0, 5, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 4, 0, 4, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 4, 0, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
 
-wmap = (int**)smap;
-return(wmap);
+	wmap = (int **)smap;
+	return (wmap);
 }
 
-static void		ft_ray_position(t_map *map, int i)
+static void ft_ray_position(t_map *map, int i)
 {
 	ft_printf("ft_ray_postition\n");
 	//calculating ray postion and direction
@@ -105,13 +102,12 @@ static void		ft_ray_position(t_map *map, int i)
 	map->mapy = (int)map->posy;
 	map->deltadistx = sqrt(1 + (map->raydiry * map->raydiry) / (map->raydirx * map->raydirx));
 	map->deltadisty = sqrt(1 + (map->raydirx * map->raydirx) / (map->raydirx * map->raydiry));
-
 }
 
-static void		ft_ray_direction(t_map *map)
+static void ft_ray_direction(t_map *map)
 {
 	ft_printf("ft_ray direction\n");
-	if(map->raydirx < 0)
+	if (map->raydirx < 0)
 	{
 		map->stepx = -1;
 		map->sidedistx = (map->posx - map->mapx) * map->deltadistx;
@@ -121,7 +117,7 @@ static void		ft_ray_direction(t_map *map)
 		map->stepx = 1;
 		map->sidedistx = (map->mapx + 1.0 - map->posx) * map->deltadistx;
 	}
-	if(map->raydiry < 0)
+	if (map->raydiry < 0)
 	{
 		map->stepy = -1;
 		map->sidedisty = (map->posy - map->mapy) * map->deltadisty;
@@ -133,73 +129,97 @@ static void		ft_ray_direction(t_map *map)
 	}
 }
 
-
-static void		ft_line_postition(t_map *map)
+static void ft_line_postition(t_map *map)
 {
 	map->lineheight = (int)(SHEIGHT / map->perpwalldist);
 	map->drawstart = map->lineheight - 1 / 2 + SHEIGHT / 2;
-	if(map->drawstart < 0)
+	if (map->drawstart < 0)
 		map->drawstart = 0;
 	map->drawend = map->lineheight / 2 + SHEIGHT / 2;
-	if(map->drawend >= SHEIGHT)
+	if (map->drawend >= SHEIGHT)
 		map->drawend = SHEIGHT - 1;
 	//int texNum = worldMap[mapX][mapY] - 1; //1 subtracted from it so that texture 0 can be used!
-	if(map->side == 0)
+	if (map->side == 0)
 		map->wallx = map->posy + map->perpwalldist * map->raydiry;
 	else
 		map->wallx = map->posy + map->perpwalldist * map->raydirx;
 	map->wallx -= floor(map->wallx); // watch!!!!!!!
 }
 
-static void		ft_ray_wall_dist(t_map *map)
+static void ft_ray_wall_dist(t_map *map)
 {
-	if(map->side == 0)
+	if (map->side == 0)
 		map->perpwalldist = (map->mapx - map->posx + (1 - map->stepx) / 2) / map->raydirx;
 	else
 		map->perpwalldist = (map->mapy - map->posy + (1 - map->stepy) / 2) / map->raydiry;
 }
 
-static void		ft_texture_handle(t_map *map)
+static void ft_texture_handle(t_map *map)
 {
-	map->tex_x = ((int) map->wallx * (double)map->texwidth);
-	if(map->side == 0 && map->raydirx > 0) // possible unsigned?
+	map->tex_x = ((int)map->wallx * (double)map->texwidth);
+	if (map->side == 0 && map->raydirx > 0) // possible unsigned?
 		map->tex_x = map->texwidth - map->tex_x - 1;
-	if(map->side == 1 && map->raydiry < 0) // !map->raydiry
+	if (map->side == 1 && map->raydiry < 0) // !map->raydiry
 		map->tex_x = map->texwidth - map->tex_x - 1;
 }
 
-void	ft_draw_wolf(t_mlx *mlx, int ft_start, int ft_end, int ft_color)
+void ft_draw_wolf(t_mlx *mlx, int ft_start, int ft_end, int ft_color)
 {
-	int	i;
+	int i;
 
 	ft_color = mlx_get_color_value(mlx->mlx_ptr, ft_color);
 	i = (4 * SWIDTH * ft_start * ft_end * 4);
 	ft_memcpy(mlx->mlx_image_ptr + i, &ft_color, sizeof(int));
 }
 
-void	ft_tex_color(t_map *map, t_mlx *mlx)
+void ft_tex_color(t_map *map, t_mlx *mlx)
 {
 	int ft_start; //end
-	int ft_end; //start
-	int	ft_color;
+	int ft_end;   //start
+	int ft_color;
 
 	ft_start = map->drawstart;
 	ft_end = map->drawend;
 	ft_color = 0x002540;
-	while(ft_start != ft_end)
+	while (ft_start != ft_end)
 	{
 		ft_printf("ft_text color\n");
 		ft_draw_wolf(mlx, ft_start, ft_end, ft_color);
 		ft_start++;
 	}
-
 }
 
-static void		ft_dda_start(t_map *map, int **wmap)
+static void ft_dda_start(t_map *map, int **wmaps)
 {
+	int wmap[MWIDTH][MHEIGHT] =
+		{
+			{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 0, 0, 3, 0, 3, 0, 3, 0, 0, 0, 1},
+			{1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 1},
+			{1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 0, 0, 0, 0, 0, 2, 2, 0, 2, 2, 0, 0, 0, 0, 3, 0, 3, 0, 3, 0, 0, 0, 1},
+			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 4, 0, 4, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 4, 0, 0, 0, 0, 5, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 4, 0, 4, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 4, 0, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+			{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
 	while (map->hit == 0)
 	{
-		ft_printf("in dda\n");
+		// ft_printf("in dda\n");
 		// jump to next map square, or in x-direction, or in y-direction
 		if (map->sidedistx < map->sidedisty)
 		{
@@ -219,16 +239,16 @@ static void		ft_dda_start(t_map *map, int **wmap)
 	}
 }
 
-int		ft_size2d(char **arr)
+int ft_size2d(char **arr)
 {
-	int		i;
+	int i;
 
 	i = 0;
 	while (arr[i])
 		i += 1;
 	return (i);
 }
-void	ft_print_2d(char **two_d)
+void ft_print_2d(char **two_d)
 {
 	int i;
 
@@ -237,25 +257,24 @@ void	ft_print_2d(char **two_d)
 		ft_printf("%s%s\n", two_d[i]);
 }
 
-void	print_dint(int **array)
+void print_dint(int **array)
 {
 	// int i = -1;
 	// int k = -1;
-	char **hold = copy_2d_array((char**)array);
+	char **hold = copy_2d_array((char **)array);
 	ft_print_2d(hold);
-	
+
 	// int len = ft_size2d((char**)array);
 	// while(array[++i] != len)
 	// 	ft_printf("%d\n", array[i]);
-
 }
 // int		main(int argc, char **argv)
-int		main(void)
+int main(void)
 {
 	t_map *map;
 	t_mlx *mlx;
 	int i;
-	int	**wmap;
+	int **wmap;
 
 	i = -1;
 	map = ft_memalloc(sizeof(t_map));
@@ -264,26 +283,25 @@ int		main(void)
 	mlx->mlx_ptr = mlx_init();
 	ft_map_init(map);
 	wmap = worldmap(wmap); // parse function here
-	print_dint(wmap);
-	// mlx->mlx_window = mlx_new_window(mlx->mlx_ptr, SWIDTH, SHEIGHT, "wolf");
-	// mlx->mlx_image = mlx_new_image(mlx->mlx_ptr, SWIDTH, SHEIGHT);
-	// mlx->mlx_image_ptr = (int*)mlx_get_data_addr(mlx->mlx_image,
-	// 	&(map->bits_per_pix), &(map->size_l), &(map->endian));
-	// mlx_hook(mlx->mlx_window, 17, 0, f_close, mlx);
-	//mlx_hook(mlx->mlx_window, 17, 0, ft_keys, mlx); // for key presses
-	// while(++i != SWIDTH) // while not the map width(640)
-	// {
-	// 	ft_ray_position(map, i);
-	// 	map->hit = 0;
-	// 	ft_ray_direction(map);
-	// 	ft_dda_start(map, wmap);
-	// 	ft_ray_wall_dist(map);
-	// 	ft_line_postition(map);
-	// 	ft_texture_handle(map);
-	// 	ft_tex_color(map, mlx);
-	// 	i++;
-
-	// }
-	// mlx_put_image_to_window(mlx, mlx->mlx_window, mlx->mlx_image, 0, 0);
-	// mlx_loop(mlx->mlx_ptr);
+	// print_dint(wmap);
+	mlx->mlx_window = mlx_new_window(mlx->mlx_ptr, SWIDTH, SHEIGHT, "wolf");
+	mlx->mlx_image = mlx_new_image(mlx->mlx_ptr, SWIDTH, SHEIGHT);
+	mlx->mlx_image_ptr = (int *)mlx_get_data_addr(mlx->mlx_image,
+												  &(map->bits_per_pix), &(map->size_l), &(map->endian));
+	mlx_hook(mlx->mlx_window, 17, 0, f_close, mlx);
+	// mlx_hook(mlx->mlx_window, 17, 0, ft_keys, mlx); // for key presses
+	while (++i != SWIDTH) // while not the map width(640)
+	{
+		ft_ray_position(map, i);
+		map->hit = 0;
+		ft_ray_direction(map);
+		ft_dda_start(map, wmap);
+		ft_ray_wall_dist(map);
+		ft_line_postition(map);
+		ft_texture_handle(map);
+		ft_tex_color(map, mlx);
+		i++;
+	}
+	mlx_put_image_to_window(mlx, mlx->mlx_window, mlx->mlx_image, 0, 0);
+	mlx_loop(mlx->mlx_ptr);
 }
