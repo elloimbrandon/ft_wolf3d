@@ -6,7 +6,7 @@
 /*   By: brfeltz <brfeltz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:42:50 by brfeltz           #+#    #+#             */
-/*   Updated: 2020/02/06 20:58:36 by brfeltz          ###   ########.fr       */
+/*   Updated: 2020/02/11 17:58:04 by brfeltz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 ** Macros
 */
 
-#define SWIDTH 800
-#define SHEIGHT 800
+#define SWIDTH 640
+#define SHEIGHT 480
 #define MWIDTH 24
 #define MHEIGHT 24
 
@@ -38,11 +38,13 @@ typedef struct          s_mlx
     void    *mlx_image;
     void    *mlx_window;
     void    *mlx_ptr;
+	void	*mlx_image_ptr;
 
 }                       t_mlx;
 
 typedef struct          s_map
 {
+	// int **wmap;
     double posx;
 	double posy;
 	double dirx;
@@ -56,19 +58,25 @@ typedef struct          s_map
 	double deltadisty;
 	double sidedistx;
 	double sidedisty;
+	double perpwalldist;
 	double wallx;
+	double step;
 	int	tex_x;
 	int texwidth;
-	int perpwalldist;
+	int texheight; // added
 	int	lineheight;
 	int	drawstart;
 	int drawend;
+	int	line_buf;
 	int stepx;
 	int stepy;
 	int mapx;
 	int mapy;
 	int hit;
 	int side;
+	int	size_l;// added 
+	int	bits_per_pix; // added
+	int	endian; // added
 }                       t_map;
 
 

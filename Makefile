@@ -2,7 +2,9 @@ SRCS = ./SRCS/main.c
 
 NAME = ft_wolf
 
-FLAGS = -Wall -Werror -Wextra
+##FLAGS = -Wall -Werror -Wextra
+
+FLAGS = -g
 
 LIBFT = libft
 
