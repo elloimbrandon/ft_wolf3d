@@ -6,7 +6,7 @@
 /*   By: brfeltz <brfeltz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:42:50 by brfeltz           #+#    #+#             */
-/*   Updated: 2020/02/12 05:55:26 by brfeltz          ###   ########.fr       */
+/*   Updated: 2020/02/12 22:01:31 by brfeltz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,19 +64,21 @@ typedef struct          s_map
 	double perpwalldist;
 	double wallx;
 	double step;
+	int ft_color; // added
 	int	tex_x;
 	int texwidth;
 	int texheight; // added
 	int	lineheight;
 	int	drawstart;
 	int drawend;
-	int	line_buf;
+	int	line_buf; // might not need
 	int stepx;
 	int stepy;
 	int mapx;
 	int mapy;
 	int hit;
 	int side;
+	int tex_num;
 }                       t_map;
 
 

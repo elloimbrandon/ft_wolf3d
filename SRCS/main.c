@@ -6,7 +6,7 @@
 /*   By: brfeltz <brfeltz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:39:14 by brfeltz           #+#    #+#             */
-/*   Updated: 2020/02/12 06:19:50 by brfeltz          ###   ########.fr       */
+/*   Updated: 2020/02/12 22:24:52 by brfeltz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static void ft_map_init(t_map *map)
 	// map->posx = 22;
 	// map->posy = 12;
 	map->i = 0;
-	map->posx = 11;
-	map->posy = 8.5;
+	map->posx = 22;
+	map->posy = 12;
 	map->dirx = -1; // -1
 	map->diry = 0; // 0
 	map->planex = 0;
@@ -35,6 +35,7 @@ static void ft_map_init(t_map *map)
 	map->sidedistx = 0;
 	map->sidedisty = 0;
 	map->perpwalldist = 0;
+	map->ft_color = 24555;
 	map->wallx = 0;
 	map->step = 0;
 	map->tex_x = 0;
@@ -48,6 +49,7 @@ static void ft_map_init(t_map *map)
 	map->mapx = 0;
 	map->mapy = 0;
 	map->side = 0;
+	map->tex_num = 0;
 }
 
 int f_close(void *mlx)
@@ -60,6 +62,7 @@ static void ft_ray_position(t_map *map)
 {
 	//calculating ray postion and direction
 	map->camerax = 2 * map->i / (double)SWIDTH - 1; // x-cordinate in camera space
+	ft_printf("%d <-- value of map->camerax\n", map->camerax);
 	map->raydirx = map->dirx + map->planex * map->camerax;
 	map->raydiry = map->diry + map->planey * map->camerax;
 	map->mapx = (int)map->posx; // from now until the last else is the DDA calculations to check the distance between rays and wall
@@ -117,6 +120,7 @@ static void ft_line_postition(t_map *map)
 
 static void ft_texture_handle(t_map *map)
 {
+	// map->tex_num = map->wmap[map->mapx][map->mapy] - 1; // need to find a way to store and use the int 2darray map
 	map->tex_x = ((int)map->wallx * (double)map->texwidth);
 	if (map->side == 0 && map->raydirx > 0)
 		map->tex_x = map->texwidth - map->tex_x - 1;
@@ -124,18 +128,19 @@ static void ft_texture_handle(t_map *map)
 		map->tex_x = map->texwidth - map->tex_x - 1;
 }
 
-void ft_tex_color(t_map *map, t_mlx *mlx)
+void ft_line_draw(t_map *map, t_mlx *mlx)
 {
 	int ft_start;
 	int ft_end;
 	int ft_color;
 
+	ft_color = map->ft_color;
 	ft_start = map->drawstart;
 	ft_end = map->drawend;
-	ft_color = 24455; // figure out a color handling function
+	//ft_color = 24455; // figure out a color handling function
 	if(map->side == 1)
 		ft_color = ft_color / 2; // brightness
-	ft_color = mlx_get_color_value(mlx->mlx_ptr, ft_color); // probably dont need?
+	//ft_color = mlx_get_color_value(mlx->mlx_ptr, ft_color); // probably dont need?
 	while (ft_start != ft_end)
 	{
 		ft_memcpy(mlx->mlx_image_ptr + (SWIDTH * 4 * ft_start + map->i * 4), &ft_color, sizeof(int));
@@ -174,7 +179,7 @@ static void ft_dda_start(t_map *map)
 			{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
 	while (map->hit == 0)
 	{
-		// jump to next map square, or in x-direction, or in y-direction
+		// jump to next map square, or in x-direction, or in y-direction      
 		if (map->sidedistx < map->sidedisty)
 		{
 			map->sidedistx += map->deltadistx;
@@ -204,6 +209,65 @@ void	ft_mlx_start(t_mlx *mlx)
 	mlx->mlx_ptr = mlx_init();
 
 }
+
+// t_map		*ft_change_color(int key, t_map *map, t_mlx *mlx)
+// {
+// 	if(key == 8)
+// 	{
+// 		if(map->ft_color < 90000)
+// 			map->ft_color += 1000;
+
+// 	}
+// 	return(map);
+// }
+
+void	ft_cast_rays(t_map *map, t_mlx *mlx)
+{
+	while (map->i != SWIDTH) // still need parse function
+	{
+		ft_ray_position(map);
+		ft_ray_direction(map);
+		ft_dda_start(map);
+		ft_line_postition(map);
+		//ft_texture_handle(map); // used for textures
+		ft_line_draw(map, mlx);
+		map->i++;
+	}
+
+}
+
+int		ft_keys(int key, t_mlx *mlx, t_map *map)
+{
+
+	double olddirx;
+	double oldplanex;
+	double rot;
+
+	rot = 1.0;
+	olddirx = map->dirx;
+	oldplanex = map->planex;
+	if(key == 53)
+		exit(1);
+	//map = ft_change_color(key, map, mlx);
+	if (key == 65)  // look left
+	{
+		ft_printf("key = %d\n", key);
+		map->dirx = map->dirx * cos(-rot) - map->diry * sin(-rot);
+		map->diry = olddirx * sin(-rot) + map->diry * cos(-rot);
+		map->planex = map->planex * cos(-rot) - map->planey * sin(-rot);
+		map->planey = oldplanex * sin(-rot) + map->planey * cos(-rot);
+		// ft_cast_rays(map, mlx);
+	}
+	/*
+	if (key = 68) // look right 
+		{
+
+	}*/
+	ft_cast_rays(map, mlx); // dis bitch break doe
+	return(0);
+
+}
+
 // int		main(int argc, char **argv)
 int main(void)
 {
@@ -217,17 +281,8 @@ int main(void)
 	mlx.mlx_image = mlx_new_image(mlx.mlx_ptr, SWIDTH, SHEIGHT);
 	mlx.mlx_image_ptr = mlx_get_data_addr(mlx.mlx_image, &mlx.bits_per_pix, &mlx.size_l, &mlx.endian);
 	mlx_hook(mlx.mlx_window, 17, 0, f_close, &mlx);
-	// mlx_hook(mlx->mlx_window, 17, 0, ft_keys, mlx); // for key presses
-	while (map.i != SWIDTH) // still need parse function
-	{
-		ft_ray_position(&map);
-		ft_ray_direction(&map);
-		ft_dda_start(&map);
-		ft_line_postition(&map);
-		ft_texture_handle(&map); // used for textures
-		ft_tex_color(&map, &mlx);
-		map.i++;
-	}
+	mlx_hook(mlx.mlx_window, 2, 0, ft_keys, &map); // for key presses
+	ft_cast_rays(&map, &mlx);
 	mlx_put_image_to_window(mlx.mlx_ptr, mlx.mlx_window, mlx.mlx_image, 0, 0);
 	mlx_loop(mlx.mlx_ptr);
 }
