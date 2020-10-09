@@ -1,6 +1,6 @@
 <p align="center">
   <div align="center">
-   <img src="assets/images/wolf3d-open.png" width="425px"</img><br>
+   <img src="assets/images/wolf3d-gif.gif" width="425px"</img><br>
   </div>
 </p>
 
@@ -68,4 +68,4 @@ Controls       |  Action
 `a`           | Move left.
 `esc`         | exit.
 
-![Wolf3d gif](assets/images/wolf3d-gif.gif)
+![Wolf3d gif](assets/images/wolf3d-open.png)
